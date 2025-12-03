@@ -781,6 +781,11 @@ const Settings = () => {
                     <span className="stat-label">Tổng doanh thu</span>
                   </div>
                   <div className="stat-card">
+                    <span className="stat-icon">©️</span>
+                    <span className="stat-value copyright-value">{formatCurrency((gameStats.summary.totalRevenue || 0) * 0.7)}</span>
+                    <span className="stat-label">Tiền bản quyền</span>
+                  </div>
+                  <div className="stat-card">
                     <span className="stat-icon">🎮</span>
                     <span className="stat-value">{gameStats.summary.totalSales || 0}</span>
                     <span className="stat-label">Tổng lượt bán</span>
@@ -790,6 +795,11 @@ const Settings = () => {
                     <span className="stat-value">{gameStats.summary.totalGames || 0}</span>
                     <span className="stat-label">Tổng số game</span>
                   </div>
+                </div>
+
+                <div className="stat-card-profit">
+                  <span className="profit-label">Lợi nhuận</span>
+                  <span className="profit-value">{formatCurrency((gameStats.summary.totalRevenue || 0) * 0.3)}</span>
                 </div>
 
                 <h3 className="subsection-title">Doanh thu theo game</h3>

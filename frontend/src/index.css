@@ -38,7 +38,7 @@
 }
 
 body {
-  font-family: 'Rajdhani', sans-serif;
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
   background: var(--bg-darkest);
   color: var(--text-primary);
   min-height: 100vh;
@@ -62,7 +62,7 @@ body::before {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
   font-weight: 700;
   letter-spacing: 1px;
 }
@@ -74,7 +74,7 @@ a {
 }
 
 button {
-  font-family: 'Rajdhani', sans-serif;
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
   font-weight: 600;
   cursor: pointer;
   border: none;
@@ -83,7 +83,7 @@ button {
 }
 
 input, select, textarea {
-  font-family: 'Rajdhani', sans-serif;
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
   font-size: 1rem;
   outline: none;
   border: none;
@@ -125,7 +125,7 @@ input, select, textarea {
   border-radius: 8px;
   font-size: 1rem;
   font-weight: 600;
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: 1px;
   transition: all 0.3s ease;
 }
@@ -191,7 +191,7 @@ input, select, textarea {
   margin-bottom: 8px;
   font-weight: 600;
   color: var(--text-secondary);
-  text-transform: uppercase;
+  text-transform: none;
   font-size: 0.85rem;
   letter-spacing: 1px;
 }
@@ -375,9 +375,9 @@ input, select, textarea {
 
 .table th {
   background: var(--bg-light);
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
   font-size: 0.85rem;
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: 1px;
   color: var(--primary);
 }
@@ -435,7 +435,7 @@ input, select, textarea {
   border-radius: 20px;
   font-size: 0.75rem;
   font-weight: 600;
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: 0.5px;
 }
 

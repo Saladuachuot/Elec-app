@@ -82,7 +82,7 @@
   color: var(--text-secondary);
   font-weight: 600;
   font-size: 0.9rem;
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: 0.5px;
 }
 
@@ -195,7 +195,7 @@
 }
 
 .game-placeholder-text {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
   font-size: 2.5rem;
   font-weight: 700;
   color: var(--primary);
@@ -219,7 +219,7 @@
   border-radius: 20px;
   font-size: 0.75rem;
   font-weight: 700;
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: 0.5px;
 }
 
@@ -244,7 +244,7 @@
 }
 
 .game-price {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
   font-weight: 700;
   color: var(--success);
   font-size: 0.95rem;
@@ -311,7 +311,7 @@
 
 .page-nav {
   padding: 10px 20px;
-  text-transform: uppercase;
+  text-transform: none;
   font-size: 0.85rem;
   letter-spacing: 0.5px;
 }
