@@ -1,27 +1,36 @@
 const mysql = require('mysql2/promise');
 const bcrypt = require('bcryptjs');
-require('dotenv').config();
+const config = require('./config');
 
-// Đọc cấu hình từ file .env hoặc dùng giá trị mặc định
+// Đọc cấu hình từ file config.js
 const dbConfig = {
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || '',  // Mặc định là rỗng
-  database: process.env.DB_NAME || 'elec_web',
+  host: config.DB_HOST,
+  user: config.DB_USER,
+  password: config.DB_PASSWORD,
+  database: config.DB_NAME,
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0
 };
 
+// Log để debug
+console.log('📦 Database config:', {
+  host: dbConfig.host,
+  user: dbConfig.user,
+  password: dbConfig.password ? '******' : '(trống)',
+  database: dbConfig.database
+});
+
 let pool = null;
 
 async function initializeDatabase() {
-  // Tạo connection không có database trước để tạo database
-  const tempConnection = await mysql.createConnection({
-    host: dbConfig.host,
-    user: dbConfig.user,
-    password: dbConfig.password
-  });
+  try {
+    // Tạo connection không có database trước để tạo database
+    const tempConnection = await mysql.createConnection({
+      host: dbConfig.host,
+      user: dbConfig.user,
+      password: dbConfig.password
+    });
 
   // Tạo database nếu chưa tồn tại
   await tempConnection.execute(`CREATE DATABASE IF NOT EXISTS ${dbConfig.database} CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci`);
@@ -176,6 +185,31 @@ async function initializeDatabase() {
 
   console.log('MySQL Database initialized successfully');
   return pool;
+  
+  } catch (error) {
+    console.error('\n❌ LỖI KẾT NỐI DATABASE!\n');
+    
+    if (error.code === 'ER_ACCESS_DENIED_ERROR') {
+      console.error('👉 SAI MẬT KHẨU MYSQL!');
+      console.error('   Mở file backend/config.js và sửa DB_PASSWORD');
+    } else if (error.code === 'ECONNREFUSED') {
+      console.error('👉 KHÔNG THỂ KẾT NỐI MYSQL!');
+      console.error('   Hãy mở XAMPP và Start MySQL trước!');
+    } else if (error.code === 'ER_NOT_SUPPORTED_AUTH_MODE') {
+      console.error('👉 LỖI XÁC THỰC MYSQL!');
+      console.error('   Chạy lệnh SQL: ALTER USER "root"@"localhost" IDENTIFIED WITH mysql_native_password BY "password";');
+    } else {
+      console.error('👉 Lỗi:', error.message);
+    }
+    
+    console.error('\n📋 CÁCH SỬA:');
+    console.error('1. Mở XAMPP → Start MySQL');
+    console.error('2. Mở file: backend/config.js');
+    console.error('3. Sửa dòng: DB_PASSWORD: "mat_khau_mysql_cua_ban"');
+    console.error('4. Lưu file và chạy lại: node server.js\n');
+    
+    throw error;
+  }
 }
 
 // Database helper functions
