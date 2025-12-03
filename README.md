@@ -36,7 +36,11 @@ Một ứng dụng web bán game với đầy đủ tính năng đăng nhập, m
 
 ## Cài đặt
 
+### Bước 1: Clone và cài đặt dependencies
 ```bash
+git clone <repository-url>
+cd elec-web
+
 # Cài đặt tất cả dependencies
 npm run install-all
 
@@ -45,6 +49,29 @@ npm install
 cd backend && npm install
 cd ../frontend && npm install
 ```
+
+### Bước 2: Cấu hình Database (QUAN TRỌNG!)
+
+1. **Đảm bảo MySQL đang chạy** (XAMPP, MySQL Workbench, etc.)
+
+2. **Tạo file `.env` trong thư mục `backend/`:**
+```bash
+cd backend
+copy env.example.txt .env
+```
+
+3. **Mở file `.env` và sửa thông tin MySQL của bạn:**
+```env
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=your_mysql_password    # ← Điền password MySQL của bạn
+DB_NAME=elec_web
+JWT_SECRET=your-secret-key
+```
+
+**Lưu ý:** 
+- Nếu MySQL không có password, để trống: `DB_PASSWORD=`
+- Database `elec_web` sẽ được tự động tạo khi chạy server
 
 ## Chạy ứng dụng
 

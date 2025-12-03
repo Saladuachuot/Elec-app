@@ -1,12 +1,13 @@
 const mysql = require('mysql2/promise');
 const bcrypt = require('bcryptjs');
+require('dotenv').config();
 
-
+// Đọc cấu hình từ file .env hoặc dùng giá trị mặc định
 const dbConfig = {
-  host: 'localhost',
-  user: 'root',
-  password: 'bi148139nh207',
-  database: 'elec_web',
+  host: process.env.DB_HOST || 'localhost',
+  user: process.env.DB_USER || 'root',
+  password: process.env.DB_PASSWORD || '',  // Mặc định là rỗng
+  database: process.env.DB_NAME || 'elec_web',
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0
