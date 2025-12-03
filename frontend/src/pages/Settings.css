@@ -1,0 +1,513 @@
+.settings-page {
+  padding-top: 90px;
+  padding-bottom: 60px;
+}
+
+.settings-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 30px;
+}
+
+@media (max-width: 900px) {
+  .settings-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Sidebar */
+.settings-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--bg-medium);
+  border: 1px solid var(--bg-lighter);
+  border-radius: 12px;
+  padding: 16px;
+  height: fit-content;
+  position: sticky;
+  top: 90px;
+}
+
+@media (max-width: 900px) {
+  .settings-sidebar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: static;
+  }
+}
+
+.settings-tab {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+  transition: all 0.3s ease;
+}
+
+.settings-tab:hover {
+  background: var(--bg-light);
+  color: var(--text-primary);
+}
+
+.settings-tab.active {
+  background: var(--primary);
+  color: var(--bg-darkest);
+}
+
+.tab-icon {
+  font-size: 1.3rem;
+}
+
+/* Content Panel */
+.settings-panel {
+  background: var(--bg-medium);
+  border: 1px solid var(--bg-lighter);
+  border-radius: 16px;
+  padding: 30px;
+}
+
+.panel-title {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin-bottom: 24px;
+}
+
+.panel-divider {
+  height: 1px;
+  background: var(--bg-lighter);
+  margin: 40px 0;
+}
+
+.form-hint {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Wallet */
+.wallet-balance-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-dark) 100%);
+  border-radius: 16px;
+  margin-bottom: 30px;
+  border: 1px solid var(--bg-lighter);
+}
+
+.balance-label {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.balance-amount {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--success);
+}
+
+.deposit-form h3 {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.deposit-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.preset-btn {
+  padding: 10px 18px;
+  background: var(--bg-light);
+  border: 2px solid var(--bg-lighter);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.preset-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.preset-btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--bg-darkest);
+}
+
+/* Transactions */
+.transactions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.transaction-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: var(--bg-light);
+  border-radius: 10px;
+  border: 1px solid var(--bg-lighter);
+}
+
+.tx-icon {
+  font-size: 1.5rem;
+  width: 40px;
+  text-align: center;
+}
+
+.tx-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.tx-description {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.tx-date {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.tx-amount {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.tx-amount.positive {
+  color: var(--success);
+}
+
+.tx-amount.negative {
+  color: var(--danger);
+}
+
+/* Admin Search */
+.admin-search {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.admin-search .form-input {
+  flex: 1;
+}
+
+/* Users List */
+.users-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.user-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: var(--bg-light);
+  border-radius: 10px;
+  border: 1px solid var(--bg-lighter);
+}
+
+.user-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  color: var(--bg-darkest);
+}
+
+.user-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.admin-badge {
+  padding: 2px 8px;
+  background: var(--primary);
+  color: var(--bg-darkest);
+  font-size: 0.7rem;
+  border-radius: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.user-details {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.user-balance {
+  font-size: 0.9rem;
+  color: var(--success);
+  font-weight: 600;
+}
+
+/* Games Management */
+.add-game-section {
+  background: var(--bg-light);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 30px;
+  border: 1px dashed var(--bg-lighter);
+}
+
+.add-game-section h3 {
+  color: var(--primary);
+  margin-bottom: 16px;
+}
+
+.add-game-form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.games-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.game-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--bg-light);
+  border-radius: 8px;
+  border: 1px solid var(--bg-lighter);
+  gap: 16px;
+}
+
+.game-item-image {
+  width: 60px;
+  height: 40px;
+  border-radius: 6px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.game-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.game-item-placeholder {
+  width: 100%;
+  height: 100%;
+  background: var(--bg-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.game-item-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.file-input {
+  padding: 10px;
+}
+
+.image-preview {
+  position: relative;
+  width: 200px;
+  margin-top: 10px;
+}
+
+.image-preview img {
+  width: 100%;
+  border-radius: 8px;
+  border: 2px solid var(--bg-lighter);
+}
+
+.remove-image {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--danger);
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.remove-image:hover {
+  background: #ff1a4a;
+}
+
+.game-item-id {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  min-width: 40px;
+}
+
+.game-item-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+.game-item-category {
+  padding: 3px 10px;
+  background: var(--bg-medium);
+  border-radius: 12px;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.game-item-price {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.85rem;
+  color: var(--success);
+  min-width: 100px;
+  text-align: right;
+}
+
+.game-item-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.edit-game-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+}
+
+.edit-game-form textarea {
+  grid-column: span 2;
+}
+
+.edit-actions {
+  grid-column: span 2;
+  display: flex;
+  gap: 8px;
+}
+
+/* Stats */
+.stats-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+  .stats-summary {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  background: var(--bg-light);
+  border-radius: 12px;
+  border: 1px solid var(--bg-lighter);
+  text-align: center;
+}
+
+.stat-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.stat-value {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.subsection-title {
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.stats-table {
+  overflow-x: auto;
+}
+
+.stats-table .table .revenue {
+  font-family: 'Orbitron', sans-serif;
+  color: var(--success);
+  font-weight: 600;
+}
+
