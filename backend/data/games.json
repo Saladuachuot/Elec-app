@@ -1,0 +1,242 @@
+[
+  {
+    "name": "Survival Island",
+    "category": "Sinh tồn",
+    "price": "299000.00",
+    "description": "Sinh tồn trên đảo hoang với tài nguyên hạn chế. Xây dựng nơi trú ẩn, tìm kiếm thức ăn và chiến đấu với thiên nhiên.",
+    "publisher": "Survival Studios",
+    "image": "default-game.png"
+  },
+  {
+    "name": "Dark Forest",
+    "category": "Kinh dị",
+    "price": "199000.00",
+    "description": "Khám phá khu rừng bị nguyền rủa và tìm đường thoát ra trước khi quá muộn.",
+    "publisher": "Horror Games Inc",
+    "image": "default-game.png"
+  },
+  {
+    "name": "Mind Puzzler",
+    "category": "Giải đố",
+    "price": "149000.00",
+    "description": "Hơn 500 câu đố thử thách trí tuệ của bạn.",
+    "publisher": "Puzzle Masters",
+    "image": "default-game.png"
+  },
+  {
+    "name": "Space Survival",
+    "category": "Sinh tồn",
+    "price": "349000.00",
+    "description": "Sinh tồn trong không gian, quản lý oxy và tài nguyên trên trạm vũ trụ bị bỏ hoang.",
+    "publisher": "Cosmic Games",
+    "image": "default-game.png"
+  },
+  {
+    "name": "Haunted Manor",
+    "category": "Kinh dị",
+    "price": "249000.00",
+    "description": "Điều tra những bí ẩn trong ngôi biệt thự ma ám.",
+    "publisher": "Spooky Entertainment",
+    "image": "default-game.png"
+  },
+  {
+    "name": "Logic Quest",
+    "category": "Giải đố",
+    "price": "129000.00",
+    "description": "Phiêu lưu qua các câu đố logic phức tạp.",
+    "publisher": "Brain Games",
+    "image": "default-game.png"
+  },
+  {
+    "name": "Desert Survivor",
+    "category": "Sinh tồn",
+    "price": "279000.00",
+    "description": "Sinh tồn trong sa mạc khắc nghiệt với nguồn nước hạn chế.",
+    "publisher": "Survival Studios",
+    "image": "default-game.png"
+  },
+  {
+    "name": "Nightmare Realm",
+    "category": "Kinh dị",
+    "price": "299000.00",
+    "description": "Bị mắc kẹt trong cơn ác mộng, tìm cách thức tỉnh.",
+    "publisher": "Horror Games Inc",
+    "image": "default-game.png"
+  },
+  {
+    "name": "Riddle Master",
+    "category": "Giải đố",
+    "price": "99000.00",
+    "description": "Giải hàng trăm câu đố để trở thành bậc thầy.",
+    "publisher": "Puzzle Masters",
+    "image": "default-game.png"
+  },
+  {
+    "name": "Ocean Depths",
+    "category": "Sinh tồn",
+    "price": "319000.00",
+    "description": "Sinh tồn dưới đáy đại dương, xây dựng căn cứ ngầm.",
+    "publisher": "Aqua Games",
+    "image": "default-game.png"
+  },
+  {
+    "name": "Silent Hill Clone",
+    "category": "Kinh dị",
+    "price": "349000.00",
+    "description": "Thành phố bị sương mù bao phủ với những sinh vật kỳ lạ.",
+    "publisher": "Spooky Entertainment",
+    "image": "default-game.png"
+  },
+  {
+    "name": "Portal Puzzles",
+    "category": "Giải đố",
+    "price": "199000.00",
+    "description": "Sử dụng cổng không gian để giải đố.",
+    "publisher": "Brain Games",
+    "image": "default-game.png"
+  },
+  {
+    "name": "Racing Thunder",
+    "category": "Khác",
+    "price": "259000.00",
+    "description": "Đua xe tốc độ cao với đồ họa chân thực.",
+    "publisher": "Speed Games",
+    "image": "default-game.png"
+  },
+  {
+    "name": "Medieval RPG",
+    "category": "Khác",
+    "price": "399000.00",
+    "description": "Nhập vai hiệp sĩ trong thế giới trung cổ.",
+    "publisher": "Fantasy World",
+    "image": "default-game.png"
+  },
+  {
+    "name": "Zombie Survival",
+    "category": "Sinh tồn",
+    "price": "289000.00",
+    "description": "Sinh tồn trong thế giới hậu tận thế zombie.",
+    "publisher": "Survival Studios",
+    "image": "default-game.png"
+  },
+  {
+    "name": "Ghost Hunter",
+    "category": "Kinh dị",
+    "price": "179000.00",
+    "description": "Săn ma với thiết bị chuyên dụng.",
+    "publisher": "Horror Games Inc",
+    "image": "default-game.png"
+  },
+  {
+    "name": "Chess Master",
+    "category": "Giải đố",
+    "price": "79000.00",
+    "description": "Chơi cờ vua với AI thông minh.",
+    "publisher": "Board Games Co",
+    "image": "default-game.png"
+  },
+  {
+    "name": "Arctic Expedition",
+    "category": "Sinh tồn",
+    "price": "269000.00",
+    "description": "Sinh tồn ở Bắc Cực với nhiệt độ âm.",
+    "publisher": "Polar Games",
+    "image": "default-game.png"
+  },
+  {
+    "name": "Asylum Escape",
+    "category": "Kinh dị",
+    "price": "229000.00",
+    "description": "Thoát khỏi bệnh viện tâm thần bị bỏ hoang.",
+    "publisher": "Spooky Entertainment",
+    "image": "default-game.png"
+  },
+  {
+    "name": "Tetris Ultimate",
+    "category": "Giải đố",
+    "price": "89000.00",
+    "description": "Phiên bản Tetris với nhiều chế độ chơi.",
+    "publisher": "Puzzle Masters",
+    "image": "default-game.png"
+  },
+  {
+    "name": "Jungle Survival",
+    "category": "Sinh tồn",
+    "price": "299000.00",
+    "description": "Sinh tồn trong rừng rậm Amazon.",
+    "publisher": "Wild Games",
+    "image": "default-game.png"
+  },
+  {
+    "name": "Creepy Doll",
+    "category": "Kinh dị",
+    "price": "159000.00",
+    "description": "Con búp bê ma ám theo dõi bạn.",
+    "publisher": "Horror Games Inc",
+    "image": "default-game.png"
+  },
+  {
+    "name": "Sudoku Pro",
+    "category": "Giải đố",
+    "price": "69000.00",
+    "description": "Hàng nghìn câu đố Sudoku.",
+    "publisher": "Number Games",
+    "image": "default-game.png"
+  },
+  {
+    "name": "City Builder",
+    "category": "Khác",
+    "price": "329000.00",
+    "description": "Xây dựng thành phố mơ ước của bạn.",
+    "publisher": "Builder Games",
+    "image": "default-game.png"
+  },
+  {
+    "name": "Sports Champion",
+    "category": "Khác",
+    "price": "249000.00",
+    "description": "Nhiều môn thể thao trong một game.",
+    "publisher": "Sports Inc",
+    "image": "default-game.png"
+  },
+  {
+    "name": "Mountain Survival",
+    "category": "Sinh tồn",
+    "price": "279000.00",
+    "description": "Leo núi và sinh tồn ở độ cao lớn.",
+    "publisher": "Peak Games",
+    "image": "default-game.png"
+  },
+  {
+    "name": "Paranormal Files",
+    "category": "Kinh dị",
+    "price": "219000.00",
+    "description": "Điều tra các hiện tượng siêu nhiên.",
+    "publisher": "Mystery Games",
+    "image": "default-game.png"
+  },
+  {
+    "name": "Crossword King",
+    "category": "Giải đố",
+    "price": "59000.00",
+    "description": "Giải ô chữ với nhiều chủ đề.",
+    "publisher": "Word Games Co",
+    "image": "default-game.png"
+  },
+  {
+    "name": "Flight Simulator",
+    "category": "Khác",
+    "price": "449000.00",
+    "description": "Mô phỏng lái máy bay thực tế.",
+    "publisher": "Sky Games",
+    "image": "default-game.png"
+  },
+  {
+    "name": "Farm Life",
+    "category": "Khác",
+    "price": "179000.00",
+    "description": "Quản lý trang trại của riêng bạn.",
+    "publisher": "Rural Games",
+    "image": "default-game.png"
+  }
+]

@@ -6,7 +6,8 @@ node_modules/
 .env.local
 .env.*.local
 
-# KHÔNG ignore config.js để teammates có thể thấy và sửa
+# Config file (mỗi người có password MySQL riêng)
+backend/config.js
 
 # Database files
 *.db

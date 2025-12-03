@@ -1,11 +1,18 @@
 // ============================================
-// CẤU HÌNH DATABASE - MỖI NGƯỜI SỬA THEO MÁY MÌNH
+// CẤU HÌNH DATABASE - COPY FILE NÀY THÀNH config.js
+// ============================================
+// 
+// Bước 1: Copy file này thành config.js
+//         copy config.example.js config.js
+//
+// Bước 2: Sửa DB_PASSWORD theo máy của bạn
+//
 // ============================================
 
 module.exports = {
   DB_HOST: 'localhost',
   DB_USER: 'root',
-  DB_PASSWORD: 'bi148139nh207',  // ← SỬA MẬT KHẨU MYSQL CỦA BẠN VÀO ĐÂY
+  DB_PASSWORD: '',           // ← SỬA MẬT KHẨU MYSQL CỦA BẠN VÀO ĐÂY
   DB_NAME: 'elec_web',
   JWT_SECRET: 'your-secret-key-2024'
 };
@@ -16,7 +23,8 @@ module.exports = {
 // 2. Sửa DB_PASSWORD thành password MySQL của bạn
 //    - Không có password: DB_PASSWORD: ''
 //    - Có password: DB_PASSWORD: 'matkhaucuaban'
-// 3. Lưu file
-// 4. Chạy: node sync-db.js (lần đầu tiên)
-// 5. Chạy: node server.js
+// 3. Lưu file config.js
+// 4. Chạy: npm run sync (lần đầu tiên)
+// 5. Chạy: npm run dev
 // ============================================
+

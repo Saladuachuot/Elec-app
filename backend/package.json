@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "dev": "node server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "sync": "node sync-db.js",
+    "export": "node export-games.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

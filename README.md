@@ -20,7 +20,7 @@ Một ứng dụng web bán game với đầy đủ tính năng đăng nhập, m
 - ✅ Chỉnh sửa thông tin tài khoản
 
 ### Admin
-- ✅ Tất cả chức năng của User
+- ✅ Tất cả chức năng của User (trừ mua game)
 - ✅ Quản lý danh sách game (Thêm/Sửa/Xóa)
 - ✅ Tìm kiếm game theo tên hoặc ID
 - ✅ Quản lý người dùng (Xem/Xóa)
@@ -31,54 +31,97 @@ Một ứng dụng web bán game với đầy đủ tính năng đăng nhập, m
 
 - **Frontend**: React 18, React Router, Axios
 - **Backend**: Node.js, Express.js
-- **Database**: SQLite (better-sqlite3)
+- **Database**: MySQL (mỗi người dùng MySQL riêng)
 - **Auth**: JWT, bcryptjs
 
-## Cài đặt
+---
 
-### Bước 1: Clone và cài đặt dependencies
+## 🚀 HƯỚNG DẪN CÀI ĐẶT CHO THÀNH VIÊN NHÓM
+
+### Bước 1: Clone project
 ```bash
 git clone <repository-url>
 cd elec-web
+```
 
-# Cài đặt tất cả dependencies
-npm run install-all
-
-# Hoặc cài thủ công
+### Bước 2: Cài đặt dependencies
+```bash
 npm install
 cd backend && npm install
 cd ../frontend && npm install
 ```
 
-### Bước 2: Cấu hình Database (QUAN TRỌNG!)
+### Bước 3: Cấu hình MySQL
 
-1. **Mở XAMPP và Start MySQL**
+1. **Mở XAMPP → Start MySQL**
 
-2. **Mở file `backend/config.js` và sửa password:**
+2. **Tạo file config từ mẫu:**
+```bash
+cd backend
+copy config.example.js config.js
+```
+
+3. **Mở file `backend/config.js` và sửa password:**
 ```javascript
 module.exports = {
   DB_HOST: 'localhost',
   DB_USER: 'root',
-  DB_PASSWORD: 'mat_khau_cua_ban',  // ← SỬA Ở ĐÂY
+  DB_PASSWORD: '',    // ← NHẬP MẬT KHẨU MYSQL CỦA BẠN
   DB_NAME: 'elec_web',
   JWT_SECRET: 'your-secret-key-2024'
 };
 ```
 
-**Lưu ý:** 
-- Nếu MySQL không có password (XAMPP mặc định), để trống: `DB_PASSWORD: ''`
-- Database `elec_web` sẽ được tự động tạo khi chạy server
+**Lưu ý:** Nếu MySQL không có password (XAMPP mặc định), để trống: `DB_PASSWORD: ''`
 
-## Chạy ứng dụng
-
+### Bước 4: Đồng bộ dữ liệu từ Admin
 ```bash
-# Chạy cả frontend và backend
-npm run dev
-
-# Hoặc chạy riêng
-npm run server  # Backend trên port 5000
-npm run client  # Frontend trên port 3000
+cd backend
+npm run sync
 ```
+
+Lệnh này sẽ:
+- Tạo database `elec_web` nếu chưa có
+- Tạo các bảng cần thiết
+- Import tất cả games từ Admin
+- Tạo tài khoản admin mặc định
+
+### Bước 5: Chạy ứng dụng
+```bash
+# Từ thư mục gốc
+npm run dev
+```
+
+---
+
+## 🔄 QUY TRÌNH ĐỒNG BỘ DỮ LIỆU
+
+### ADMIN làm:
+1. Thêm/Sửa/Xóa game trên web
+2. Export dữ liệu:
+```bash
+cd backend
+npm run export
+```
+3. Commit và Push:
+```bash
+git add data/games.json
+git commit -m "Update games data"
+git push
+```
+
+### THÀNH VIÊN làm:
+1. Pull code mới:
+```bash
+git pull
+```
+2. Đồng bộ database:
+```bash
+cd backend
+npm run sync
+```
+
+---
 
 ## Tài khoản mặc định
 
@@ -86,80 +129,54 @@ npm run client  # Frontend trên port 3000
 - Username: `admin`
 - Password: `admin123`
 
+---
+
 ## Cấu trúc thư mục
 
 ```
 elec-web/
 ├── backend/
-│   ├── routes/
-│   │   ├── auth.js      # Đăng nhập/Đăng ký
-│   │   ├── games.js     # Quản lý game
-│   │   ├── users.js     # Quản lý user
-│   │   ├── cart.js      # Giỏ hàng
-│   │   ├── library.js   # Thư viện game
-│   │   └── transactions.js # Lịch sử giao dịch
-│   ├── database.js      # SQLite database
-│   ├── server.js        # Express server
-│   └── package.json
+│   ├── routes/           # API routes
+│   ├── data/
+│   │   └── games.json    # Dữ liệu games (Admin cập nhật)
+│   ├── uploads/          # Ảnh upload
+│   ├── database.js       # Database setup
+│   ├── config.js         # Cấu hình MySQL (mỗi người sửa riêng)
+│   ├── sync-db.js        # Script đồng bộ database
+│   ├── export-games.js   # Script export games (Admin dùng)
+│   └── server.js
 ├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── Navbar.jsx
-│   │   │   └── Navbar.css
-│   │   ├── context/
-│   │   │   └── AuthContext.jsx
-│   │   ├── pages/
-│   │   │   ├── Login.jsx
-│   │   │   ├── Register.jsx
-│   │   │   ├── Store.jsx
-│   │   │   ├── GameDetail.jsx
-│   │   │   ├── PlayGame.jsx
-│   │   │   ├── Cart.jsx
-│   │   │   ├── Library.jsx
-│   │   │   └── Settings.jsx
-│   │   ├── App.jsx
-│   │   ├── main.jsx
-│   │   └── index.css
-│   ├── index.html
-│   └── package.json
+│   └── src/
+│       ├── components/
+│       ├── context/
+│       └── pages/
 └── package.json
 ```
 
-## API Endpoints
+---
 
-### Auth
-- `POST /api/auth/register` - Đăng ký
-- `POST /api/auth/login` - Đăng nhập
-- `GET /api/auth/me` - Lấy thông tin user hiện tại
+## Lệnh thường dùng
 
-### Games
-- `GET /api/games` - Danh sách game (có phân trang, search, filter)
-- `GET /api/games/:id` - Chi tiết game
-- `POST /api/games` - Thêm game (Admin)
-- `PUT /api/games/:id` - Sửa game (Admin)
-- `DELETE /api/games/:id` - Xóa game (Admin)
-- `GET /api/games/admin/statistics` - Thống kê doanh thu (Admin)
+| Lệnh | Mô tả |
+|------|-------|
+| `npm run dev` | Chạy cả frontend và backend |
+| `npm run sync` | Đồng bộ database từ games.json (trong backend/) |
+| `npm run export` | Export games ra file JSON (Admin dùng, trong backend/) |
 
-### Users
-- `GET /api/users` - Danh sách user (Admin)
-- `PUT /api/users/profile` - Cập nhật profile
-- `PUT /api/users/password` - Đổi mật khẩu
-- `POST /api/users/wallet/deposit` - Nạp tiền
-- `DELETE /api/users/:id` - Xóa user (Admin)
+---
 
-### Cart
-- `GET /api/cart` - Xem giỏ hàng
-- `POST /api/cart/add` - Thêm vào giỏ
-- `DELETE /api/cart/remove/:gameId` - Xóa khỏi giỏ
-- `POST /api/cart/checkout` - Thanh toán
+## Xử lý lỗi thường gặp
 
-### Library
-- `GET /api/library` - Xem thư viện
-- `GET /api/library/owns/:gameId` - Kiểm tra sở hữu game
-- `POST /api/library/refund/:gameId` - Hoàn tiền game
+### ❌ "Access denied for user 'root'@'localhost'"
+→ Sai password MySQL. Sửa `DB_PASSWORD` trong `backend/config.js`
 
-### Transactions
-- `GET /api/transactions` - Lịch sử giao dịch
+### ❌ "ECONNREFUSED" 
+→ MySQL chưa chạy. Mở XAMPP và Start MySQL
+
+### ❌ "Unknown database 'elec_web'"
+→ Chạy `npm run sync` trong thư mục backend
+
+---
 
 ## Screenshots
 
@@ -168,4 +185,3 @@ elec-web/
 - Font Orbitron và Rajdhani
 - Hiệu ứng glow và gradient
 - Responsive design
-
