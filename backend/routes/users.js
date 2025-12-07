@@ -4,7 +4,6 @@ const bcrypt = require('bcryptjs');
 const { db } = require('../database');
 const { verifyToken } = require('./auth');
 
-// Get all users (admin only)
 router.get('/', verifyToken, async (req, res) => {
   try {
     if (!req.user.is_admin) {
@@ -31,7 +30,6 @@ router.get('/', verifyToken, async (req, res) => {
   }
 });
 
-// Update user profile
 router.put('/profile', verifyToken, async (req, res) => {
   try {
     const { display_name, email, birthdate } = req.body;
