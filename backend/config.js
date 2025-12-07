@@ -5,7 +5,7 @@
 module.exports = {
   DB_HOST: 'localhost',
   DB_USER: 'root',
-  DB_PASSWORD: '',  // ← SỬA MẬT KHẨU MYSQL CỦA BẠN VÀO ĐÂY
+  DB_PASSWORD: '15122006',  // ← SỬA MẬT KHẨU MYSQL CỦA BẠN VÀO ĐÂY
   DB_NAME: 'elec_web',
   JWT_SECRET: 'your-secret-key-2024'
 };
