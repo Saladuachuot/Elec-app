@@ -1,12 +1,4 @@
-/**
- * EXPORT GAMES SCRIPT (CHỈ DÀNH CHO ADMIN)
- * 
- * Chạy script này để xuất danh sách games ra file JSON:
- * node export-games.js
- * 
- * Sau đó commit và push file data/games.json lên Git
- * Các thành viên khác pull về và chạy: node sync-db.js
- */
+
 
 const mysql = require('mysql2/promise');
 const fs = require('fs');
@@ -27,18 +19,15 @@ async function exportGames() {
   try {
     connection = await mysql.createConnection(dbConfig);
     
-    // Lấy tất cả games
     const [games] = await connection.execute(
       'SELECT name, category, price, description, publisher, image FROM games ORDER BY id'
     );
     
-    // Tạo thư mục data nếu chưa có
     const dataDir = path.join(__dirname, 'data');
     if (!fs.existsSync(dataDir)) {
       fs.mkdirSync(dataDir);
     }
     
-    // Ghi ra file JSON
     const outputFile = path.join(dataDir, 'games.json');
     fs.writeFileSync(outputFile, JSON.stringify(games, null, 2), 'utf8');
     
@@ -57,6 +46,9 @@ async function exportGames() {
 }
 
 exportGames();
+
+
+
 
 
 

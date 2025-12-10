@@ -3,7 +3,6 @@ const router = express.Router();
 const { db } = require('../database');
 const { verifyToken } = require('./auth');
 
-// Get user's library
 router.get('/', verifyToken, async (req, res) => {
   try {
     const games = await db.all(`
@@ -29,7 +28,6 @@ router.get('/', verifyToken, async (req, res) => {
   }
 });
 
-// Check if user owns a game
 router.get('/owns/:gameId', verifyToken, async (req, res) => {
   try {
     const owns = await db.get('SELECT id FROM user_library WHERE user_id = ? AND game_id = ?', [req.user.id, req.params.gameId]);
@@ -39,7 +37,6 @@ router.get('/owns/:gameId', verifyToken, async (req, res) => {
   }
 });
 
-// Refund game
 router.post('/refund/:gameId', verifyToken, async (req, res) => {
   try {
     const purchase = await db.get(`
@@ -53,7 +50,6 @@ router.post('/refund/:gameId', verifyToken, async (req, res) => {
       return res.status(404).json({ message: 'Bạn không sở hữu game này!' });
     }
 
-    // Check if within 2 days
     const purchaseDate = new Date(purchase.purchased_at);
     const now = new Date();
     const diffDays = (now - purchaseDate) / (1000 * 60 * 60 * 24);
@@ -64,12 +60,10 @@ router.post('/refund/:gameId', verifyToken, async (req, res) => {
 
     const refundAmount = parseFloat(purchase.price);
 
-    // Process refund
     await db.run('DELETE FROM user_library WHERE user_id = ? AND game_id = ?', [req.user.id, req.params.gameId]);
     await db.run('UPDATE users SET wallet_balance = wallet_balance + ? WHERE id = ?', [refundAmount, req.user.id]);
     await db.run('UPDATE games SET sales_count = sales_count - 1 WHERE id = ?', [req.params.gameId]);
 
-    // Record transaction
     await db.run(`
       INSERT INTO transactions (user_id, type, amount, game_id, description)
       VALUES (?, 'refund', ?, ?, ?)

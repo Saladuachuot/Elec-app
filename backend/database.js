@@ -2,7 +2,6 @@ const mysql = require('mysql2/promise');
 const bcrypt = require('bcryptjs');
 const config = require('./config');
 
-// Đọc cấu hình từ file config.js
 const dbConfig = {
   host: config.DB_HOST,
   user: config.DB_USER,

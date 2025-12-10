@@ -17,7 +17,6 @@ const Store = () => {
 
   const categories = ['Sinh tồn', 'Kinh dị', 'Giải đố', 'Khác'];
 
-  // Debounce search
   useEffect(() => {
     const timer = setTimeout(() => {
       setSearchDebounce(search);

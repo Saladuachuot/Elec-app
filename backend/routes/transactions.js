@@ -3,7 +3,6 @@ const router = express.Router();
 const { db } = require('../database');
 const { verifyToken } = require('./auth');
 
-// Get user's transaction history
 router.get('/', verifyToken, async (req, res) => {
   try {
     const transactions = await db.all(`

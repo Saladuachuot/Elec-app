@@ -207,26 +207,3 @@
 .auth-link:hover {
   text-decoration: underline;
 }
-
-.auth-demo {
-  margin-top: 20px;
-  padding: 16px;
-  background: rgba(0, 245, 255, 0.1);
-  border: 1px dashed var(--primary);
-  border-radius: 8px;
-  text-align: center;
-}
-
-.auth-demo p {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-}
-
-.auth-demo code {
-  background: var(--bg-light);
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-family: 'Segoe UI', 'Roboto', sans-serif;
-  color: var(--primary);
-}
-

@@ -9,27 +9,22 @@ const Settings = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState({ type: '', text: '' });
 
-  // Profile state
   const [profile, setProfile] = useState({
     display_name: '',
     email: '',
     birthdate: ''
   });
 
-  // Password state
   const [passwords, setPasswords] = useState({
     currentPassword: '',
     newPassword: '',
     confirmPassword: ''
   });
 
-  // Wallet state
   const [depositAmount, setDepositAmount] = useState('');
 
-  // Transactions state
   const [transactions, setTransactions] = useState([]);
 
-  // Admin states
   const [users, setUsers] = useState([]);
   const [userSearch, setUserSearch] = useState('');
   const [games, setGames] = useState([]);

@@ -4,7 +4,6 @@ const bcrypt = require('bcryptjs');
 const { db } = require('../database');
 const { verifyToken } = require('./auth');
 
-// Get all users (admin only)
 router.get('/', verifyToken, async (req, res) => {
   try {
     if (!req.user.is_admin) {
@@ -31,12 +30,10 @@ router.get('/', verifyToken, async (req, res) => {
   }
 });
 
-// Update user profile
 router.put('/profile', verifyToken, async (req, res) => {
   try {
     const { display_name, email, birthdate } = req.body;
 
-    // Check if email is taken by another user
     const emailExists = await db.get('SELECT id FROM users WHERE email = ? AND id != ?', [email, req.user.id]);
     if (emailExists) {
       return res.status(400).json({ message: 'Email đã được sử dụng!' });
@@ -53,7 +50,6 @@ router.put('/profile', verifyToken, async (req, res) => {
   }
 });
 
-// Change password
 router.put('/password', verifyToken, async (req, res) => {
   try {
     const { currentPassword, newPassword } = req.body;
@@ -64,7 +60,6 @@ router.put('/password', verifyToken, async (req, res) => {
       return res.status(400).json({ message: 'Mật khẩu hiện tại không đúng!' });
     }
 
-    // Check if new password is unique
     const allUsers = await db.all('SELECT password FROM users WHERE id != ?', [req.user.id]);
     for (const u of allUsers) {
       if (bcrypt.compareSync(newPassword, u.password)) {
@@ -81,7 +76,6 @@ router.put('/password', verifyToken, async (req, res) => {
   }
 });
 
-// Add money to wallet
 router.post('/wallet/deposit', verifyToken, async (req, res) => {
   try {
     const { amount } = req.body;
@@ -92,7 +86,6 @@ router.post('/wallet/deposit', verifyToken, async (req, res) => {
 
     await db.run('UPDATE users SET wallet_balance = wallet_balance + ? WHERE id = ?', [amount, req.user.id]);
     
-    // Record transaction
     await db.run(`
       INSERT INTO transactions (user_id, type, amount, description)
       VALUES (?, 'deposit', ?, 'Nạp tiền vào ví')
@@ -109,7 +102,6 @@ router.post('/wallet/deposit', verifyToken, async (req, res) => {
   }
 });
 
-// Delete user (admin only)
 router.delete('/:id', verifyToken, async (req, res) => {
   try {
     if (!req.user.is_admin) {
@@ -118,13 +110,11 @@ router.delete('/:id', verifyToken, async (req, res) => {
 
     const userId = req.params.id;
 
-    // Don't allow deleting admin
     const user = await db.get('SELECT is_admin FROM users WHERE id = ?', [userId]);
     if (user && user.is_admin) {
       return res.status(400).json({ message: 'Không thể xóa tài khoản admin!' });
     }
 
-    // Delete related data (cascade should handle this, but just in case)
     await db.run('DELETE FROM cart WHERE user_id = ?', [userId]);
     await db.run('DELETE FROM user_library WHERE user_id = ?', [userId]);
     await db.run('DELETE FROM transactions WHERE user_id = ?', [userId]);

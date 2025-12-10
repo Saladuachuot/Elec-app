@@ -104,10 +104,6 @@ const Login = () => {
           <div className="auth-footer">
             <p>Chưa có tài khoản? <Link to="/register" className="auth-link">Đăng ký ngay</Link></p>
           </div>
-
-          <div className="auth-demo">
-            <p>Demo Admin: <code>admin</code> / <code>admin123</code></p>
-          </div>
         </div>
       </div>
     </div>

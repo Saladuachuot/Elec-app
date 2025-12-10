@@ -6,7 +6,6 @@ const fs = require('fs');
 const { db } = require('../database');
 const { verifyToken } = require('./auth');
 
-// Configure multer for image upload
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     const uploadDir = path.join(__dirname, '../uploads/games');
@@ -23,7 +22,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({
   storage,
-  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB max
+  limits: { fileSize: 5 * 1024 * 1024 }, 
   fileFilter: (req, file, cb) => {
     const allowedTypes = /jpeg|jpg|png|gif|webp/;
     const extname = allowedTypes.test(path.extname(file.originalname).toLowerCase());
@@ -35,7 +34,6 @@ const upload = multer({
   }
 });
 
-// Get all games with pagination and filters
 router.get('/', async (req, res) => {
   try {
     const { page = 1, limit = 30, search = '', category = '' } = req.query;
@@ -88,7 +86,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Get game statistics (admin only)
 router.get('/admin/statistics', verifyToken, async (req, res) => {
   try {
     if (!req.user.is_admin) {
@@ -125,7 +122,6 @@ router.get('/admin/statistics', verifyToken, async (req, res) => {
   }
 });
 
-// Get single game
 router.get('/:id', async (req, res) => {
   try {
     const game = await db.get('SELECT * FROM games WHERE id = ?', [req.params.id]);
@@ -139,7 +135,6 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// Add game with image (admin only)
 router.post('/', verifyToken, upload.single('image'), async (req, res) => {
   try {
     if (!req.user.is_admin) {
@@ -164,7 +159,6 @@ router.post('/', verifyToken, upload.single('image'), async (req, res) => {
   }
 });
 
-// Update game with image (admin only)
 router.put('/:id', verifyToken, upload.single('image'), async (req, res) => {
   try {
     if (!req.user.is_admin) {
@@ -173,12 +167,10 @@ router.put('/:id', verifyToken, upload.single('image'), async (req, res) => {
 
     const { name, category, price, description, publisher } = req.body;
     
-    // Get current game to check old image
     const currentGame = await db.get('SELECT image FROM games WHERE id = ?', [req.params.id]);
     
     let image = currentGame?.image || 'default-game.png';
     if (req.file) {
-      // Delete old image if it exists and is not default
       if (currentGame?.image && currentGame.image !== 'default-game.png') {
         const oldImagePath = path.join(__dirname, '../uploads/games', currentGame.image);
         if (fs.existsSync(oldImagePath)) {
@@ -200,14 +192,12 @@ router.put('/:id', verifyToken, upload.single('image'), async (req, res) => {
   }
 });
 
-// Delete game (admin only)
 router.delete('/:id', verifyToken, async (req, res) => {
   try {
     if (!req.user.is_admin) {
       return res.status(403).json({ message: 'Không có quyền truy cập!' });
     }
 
-    // Get game image to delete
     const game = await db.get('SELECT image FROM games WHERE id = ?', [req.params.id]);
     if (game?.image && game.image !== 'default-game.png') {
       const imagePath = path.join(__dirname, '../uploads/games', game.image);
@@ -223,7 +213,7 @@ router.delete('/:id', verifyToken, async (req, res) => {
   }
 });
 
-// Get categories
+
 router.get('/meta/categories', (req, res) => {
   res.json(['Sinh tồn', 'Kinh dị', 'Giải đố', 'Khác']);
 });
